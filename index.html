@@ -17,9 +17,8 @@
         }
 
         .container {
-            /* המלבן הגדול עכשיו שקוף לחלוטין */
             background: transparent; 
-            width: 90%;
+            width: 95%;
             max-width: 500px;
             margin: 30px 10px;
             padding: 10px;
@@ -28,22 +27,23 @@
 
         h1 { 
             color: #b59410; 
+			font-size: 3.0em;
             font-family: 'Georgia', serif; 
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8); /* צל עדין כדי שהכותרת תבלוט על הרקע */
+            margin-bottom: 30px; 
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8); 
         }
 
         h2 { 
             color: #8a6d3b; 
+			font-size: 2.0em;
             border-bottom: 2px solid #b59410; 
             display: inline-block; 
             padding-bottom: 5px; 
-            margin-top: 30px;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            margin-top: 30px; 
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8); 
         }
         
         .interactive-item {
-            /* חלוניות חצי שקופות עם אפקט טשטוש זכוכית */
             background: rgba(255, 255, 255, 0.85); 
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
@@ -51,11 +51,15 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
+
+        .is-current { border: 2px solid #b59410; background: rgba(255, 255, 255, 0.95); }
 
         summary {
             padding: 15px;
             font-weight: bold;
+			font-size: 1.0em;
             cursor: pointer;
             list-style: none;
             display: flex;
@@ -70,62 +74,90 @@
             content: '❮';
             font-size: 0.8em;
             color: #b59410;
-            transition: transform 0.3s;
+            transition: transform 0.4s ease;
             position: absolute;
             left: 15px;
         }
 
-        details[open] summary::after {
-            transform: rotate(-90deg);
+        details[open] summary::after { transform: rotate(-90deg); }
+
+        /* אנימציה חלקה לתוכן */
+        details > .content {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s ease-out;
+            display: none; 
+        }
+
+        details[open] > .content {
+            display: block;
+            animation: slideDown 0.5s forwards;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .content {
             padding: 15px;
             border-top: 1px solid rgba(181, 148, 16, 0.2);
-            font-size: 0.95em;
+            font-size: 1.2em;
             line-height: 1.6;
             color: #444;
-            background: rgba(255, 255, 255, 0.5); /* רקע פנימי עדין עוד יותר */
+            background: rgba(255, 255, 255, 0.5);
             text-align: center;
         }
 
-        .time {
-            color: #b59410;
-            margin-left: 10px;
+        /* עיצוב המנות החדש */
+        .dish-box {
+            margin-bottom: 15px; /* רווח בין מנה למנה */
+        }
+        .dish-title {
+            font-size: 1.15em; /* מעט גדול יותר */
             font-weight: bold;
+            color: #2c3e50; /* צבע כהה וברור */
+            margin-bottom: 2px;
+        }
+        .dish-desc {
+            font-weight: normal;
+            font-size: 1.0em;
+            color: #666;
+        }
+        .section-title {
+            color: #b59410;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 1.1em;
+            text-decoration: underline;
         }
 
-        .footer { 
-            font-size: 0.9em; 
-            color: #444; 
-            margin-top: 40px; 
-            font-style: italic;
-            text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
-        }
+        .time { color: #b59410; margin-left: 10px; font-weight: bold; }
+        .footer { font-size: 0.9em; color: #444; margin-top: 40px; font-style: italic; text-shadow: 1px 1px 1px rgba(255,255,255,0.8); }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>החתונה של ירדן & מתן</h1>
-	<h1>15.01.2026</h1>
-
+    <h1>חוגגים אהבה</h1>
     <h2>לו"ז האירוע</h2>
 
-    <details class="interactive-item">
+    <details class="interactive-item" id="event-1900">
         <summary><span><span class="time">19:00</span>קבלת פנים</span></summary>
         <div class="content">
             <strong>לחיים! 🍸</strong><br>
-            • ג'ין תפוזים, אננס וספרייט מרענן<br>
-            • ערק לימונענע, תות וחמוציות<br>
-            • סנגריה חמה ומלטפת<br><br>
+            • ג'ין תפוזים עם ספרייט, אננס ומונין<br>
+            • ערק לימונענע, תות, חמוציות<br>
+            • סנגריה חמה<br><br>
             
             <strong>מה בבופה? 🍴</strong><br>
-            שווארמה בר, באן אסאדו מפורק, פאני פורי וסביצ'ה, ברוסקטה איטלקית, מאפי טאבון, דגים מהפלנצ'ה וצ'יבורקי טלה.
+            שווארמה בר, ברוסקטה איטלקית, פאני פורי וסביצ'ה, באן אסאדו מפורק, מגוון מאפי טאבון חמים, דגים צרובים על הפלנצ'ה, צ'יבורקי במילוי בשר טלה.
         </div>
     </details>
 
-    <details class="interactive-item">
+    <details class="interactive-item" id="event-2015">
         <summary><span><span class="time">20:15</span>חופה וקידושין</span></summary>
         <div class="content">
             <strong>טקס הנישואין</strong><br>
@@ -146,7 +178,7 @@
         </div>
     </details>
 
-    <details class="interactive-item">
+    <details class="interactive-item" id="event-2115">
         <summary><span><span class="time">21:15</span>מנות ראשונות וריקודים</span></summary>
         <div class="content">
             <strong>מררימים וטועמים 💃</strong><br>
@@ -158,38 +190,56 @@
             • מאפה גרייס במילוי בשר עגל ומטבלים<br><br>
 
             <strong>מהשדה:</strong><br>
-            • סלט כפרי עם עשבים קצוצים, חמוציות ופיצוחים בסילאן<br>
-            • סלט אנדיב וסלנובה ברוטב הדרים ופקאן מקורמל<br>
-            • קוביות בטטה מקורמלות עם פקאן מסוכר ועלים ירוקים<br><br>
+            • סלט כפרי - עשבים קצוצים, פיצוחים מקורמלים, חמוציות וסילאן<br>
+            • סלט אנדיב - לליק, סלנובה, בוקצ'וי דפי סמית' ברוטב הדרים ופקאן מקורמל<br>
+            • קוביות בטטה מקורמלות עם עלים ירוקים ופקאן מסוכר<br><br>
             
             <strong>מהמטבח החם:</strong><br>
-            • פטריות מוקפצות עם בצל ירוק וסויה<br>
-            • כרובית מטוגנת ברוטב צ'ילי מתוק<br>
+            • סלט פטריות מוקפצות עם בצל ירוק ורוטב סויה<br>
+            • כרובית מטוגנת עם מטבל רוטב צ'ילי מתוק<br>
             • חומוס ביתי עם שמן זית וגרגירים<br><br>
             
             <strong>ועוד פינוקים:</strong><br>
-            • קרפצ'יו בקר מוקפד<br>
-            • פטה כבד עשיר
+            • קרפצ'ו בקר<br>
+            • פטה כבד
         </div>
     </details>
 
-    <details class="interactive-item">
+    <details class="interactive-item" id="event-2200">
         <summary><span><span class="time">22:00</span>מנה עיקרית</span></summary>
         <div class="content">
-            <strong>הנבחרת שלנו 🍽️</strong><br>
-            זמן להטעין כוחות עם המנות העיקריות שבחרנו עבורכם:<br><br>
+            <div style="font-size: 1.1em; color: #b59410; margin-bottom: 15px;">הנבחרת שלנו 🍽️</div>
             
-            • <strong>סטייק פרגית אסייאתי:</strong> צלוי בגריל על מצע קרם בטטה מתקתק ואורז לבן.<br>
-            • <strong>אסאדו ביין אדום:</strong> בצלייה איטית ונימוחה, מוגש עם תפוחי אדמה וירקות שורש.<br>
-            • <strong>פילה בקר:</strong> נתח מובחר ואיכותי על קרם שורשים עשיר.<br><br>
-            
-            <strong>מנות מהצומח:</strong><br>
-            • <strong>טבעוני:</strong> כיסוני ירקות בעבודת יד ברוטב עגבניות טריות.<br>
-            • <strong>צמחוני:</strong> סופלקי על האש בתוך טורטייה חמה עם סלט עלים רענן.
+            <div class="dish-box">
+                <div class="dish-title">סטייק פרגית בסגנון אסייאתי</div>
+                <div class="dish-desc">על מצע קרם בטטה ואורז</div>
+            </div>
+
+            <div class="dish-box">
+                <div class="dish-title">אסאדו בציר יין אדום</div>
+                <div class="dish-desc">בצלייה איטית עם תפוחי אדמה וירקות</div>
+            </div>
+
+            <div class="dish-box">
+                <div class="dish-title">פילה בקר חם</div>
+                <div class="dish-desc">על קרם שורשים</div>
+            </div>
+
+            <span class="section-title">מנות מהצומח</span>
+
+            <div class="dish-box">
+                <div class="dish-title">כיסונים (טבעוני)</div>
+                <div class="dish-desc">במילוי ירקות ברוטב עגבניות</div>
+            </div>
+
+            <div class="dish-box">
+                <div class="dish-title">סופלקי על האש (צמחוני)</div>
+                <div class="dish-desc">בטורטיה וסלט עלים</div>
+            </div>
         </div>
     </details>
 
-    <details class="interactive-item">
+    <details class="interactive-item" id="event-2230">
         <summary><span><span class="time">22:30</span>ריקודים עד הבוקר</span></summary>
         <div class="content">
             <strong>מרימים את התקרה! 🎧</strong><br>
@@ -198,18 +248,54 @@
         </div>
     </details>
 
-    <details class="interactive-item">        
+    <details class="interactive-item" id="event-2300">        
         <summary><span><span class="time">23:00</span>אפטר פארטי</span></summary>
         <div class="content">
             <strong>הדלק של הלילה 🌭🍦</strong><br>
             לשורדים האחרונים על הרחבה ולמי שצריך עוד כוח להמשיך:<br><br>
-            • <strong>ברלין בר:</strong> נקניקיות חמות בלחמנייה עם כל התוספות.<br>
-            • <strong>מגנום בר:</strong> מגנומים קרים, מתוקים ומפנקים ישר ליד.
+            • <strong>ברלין בר:</strong> נקניקיות<br>
+            • <strong>מגנום בר:</strong> מגנומים קרים ומתוקים
         </div>
     </details>
 
     <p class="footer">מחכים לראותכם על הרחבה!</p>
 </div>
+
+<script>
+    function updateSchedule() {
+        const now = new Date();
+        const currentTime = now.getHours() * 100 + now.getMinutes();
+        
+        // רשימת האירועים והשעות שלהם
+        const schedule = [
+            { id: 'event-1900', start: 1900, end: 2015 },
+            { id: 'event-2015', start: 2015, end: 2115 },
+            { id: 'event-2115', start: 2115, end: 2200 },
+            { id: 'event-2200', start: 2200, end: 2230 },
+            { id: 'event-2230', start: 2230, end: 2300 },
+            { id: 'event-2300', start: 2300, end: 2359 }
+        ];
+
+        schedule.forEach(item => {
+            const element = document.getElementById(item.id);
+            // בדיקה אם השעה הנוכחית מתאימה לאירוע
+            if (currentTime >= item.start && currentTime < item.end) {
+                // רק אם החלון לא פתוח - תפתח אותו
+                if (!element.hasAttribute('open')) {
+                    element.setAttribute('open', '');
+                }
+                // הוסף את המסגרת המדגישה
+                element.classList.add('is-current');
+            } else {
+                // הסר רק את המסגרת המדגישה
+                element.classList.remove('is-current');
+            }
+        });
+    }
+
+    updateSchedule();
+    setInterval(updateSchedule, 60000);
+</script>
 
 </body>
 </html>
